@@ -12,9 +12,10 @@
 }
 
 .attribution { 
+   padding-top: 4em;
     font-size: 11px; text-align: center; 
 }
 
 .attribution a { 
-    color: hsl(228, 45%, 44%); 
+    color: variables.$toggle-equal-key1; 
 }

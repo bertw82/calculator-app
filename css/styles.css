@@ -352,12 +352,13 @@ template {
 }
 
 .attribution {
+  padding-top: 4em;
   font-size: 11px;
   text-align: center;
 }
 
 .attribution a {
-  color: #3e52a3;
+  color: #d03f2f;
 }
 
 .header-content {
@@ -365,14 +366,20 @@ template {
   display: flex;
   align-items: center;
 }
+.header-content h2 {
+  font-weight: 900;
+  font-size: 2rem;
+  align-self: flex-start;
+}
 .header-content p {
   margin-left: auto;
   margin-right: 1em;
+  font-size: 0.8rem;
 }
 
 .toggle-div {
   align-self: flex-start;
-  width: 60px;
+  width: 70px;
 }
 
 .number-div {
@@ -387,17 +394,87 @@ template {
   justify-content: space-around;
 }
 
+.keypad {
+  background-color: #232c43;
+  margin-top: 2em;
+  border-radius: 10px;
+}
+
+.griddy {
+  padding: 1.25em;
+}
+
+.number-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 15px;
+}
+@media (min-width: 768px) {
+  .number-grid {
+    grid-gap: 25px;
+  }
+}
+.number-grid > div {
+  background-color: #eae3dc;
+  box-shadow: 0 3px 0 #b4a597;
+  color: #232c43;
+  height: 50px;
+  border-radius: 5px;
+  font-weight: 900;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.number-grid > div:nth-of-type(4) {
+  background-color: #637097;
+  color: #fff;
+  box-shadow: 0 3px 0 #404e72;
+  font-size: 1rem;
+}
+
+.reset-equal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 15px;
+  margin-top: 15px;
+}
+@media (min-width: 768px) {
+  .reset-equal {
+    margin-top: 25px;
+    grid-gap: 25px;
+  }
+}
+.reset-equal > div {
+  color: #fff;
+  border-radius: 5px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.reset-equal > div:first-child {
+  background-color: #637097;
+  box-shadow: 0 3px 0 #404e72;
+}
+.reset-equal > div:last-child {
+  background-color: #d03f2f;
+  box-shadow: 0 3px 0 #93261a;
+}
+
 .main-body {
   background-color: #3a4764;
   color: #fff;
-  height: 100vh;
+  min-height: 100vh;
+  overflow: scroll;
 }
 
 .container {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   padding-top: 2em;
-  height: 450px;
 }
 @media (min-width: 376px) {
   .container {
@@ -406,18 +483,26 @@ template {
 }
 @media (min-width: 768px) {
   .container {
-    max-width: 600px;
+    max-width: 550px;
+    padding-top: 4em;
   }
 }
 
 .input-field input {
   background-color: #182034;
-  padding: 2em;
+  padding: 1.5em;
   width: 100%;
   border: none;
   border-radius: 10px;
   color: #fff;
   text-align: right;
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+@media (min-width: 768px) {
+  .input-field input {
+    padding: 2em;
+  }
 }
 
 .radio-div {
@@ -427,6 +512,7 @@ template {
 
 input[type=radio] {
   opacity: 0;
+  cursor: pointer;
 }
 
 .radio-label {

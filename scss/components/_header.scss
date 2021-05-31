@@ -4,15 +4,21 @@
 .header-content {
     height: 4em;
     @include mixins.flex-box($align: center);
+    h2 {
+        font-weight: 900;
+        font-size: 2rem;
+        align-self: flex-start;
+    }
     p {
         margin-left: auto;
         margin-right: 1em;
+        font-size: .8rem;
     }
 }
 
 .toggle-div {
     align-self: flex-start;
-    width: 60px;
+    width: 70px;
 }
 
 .number-div {
