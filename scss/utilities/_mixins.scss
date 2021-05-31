@@ -1,0 +1,25 @@
+// flexbox mixin
+@mixin flex-box(
+  $disp: flex,
+  $dir: null,
+  $wrap: null,
+  $just: null,
+  $align: null,) {
+  display: $disp;
+  flex-direction: $dir;
+  flex-wrap: $wrap;
+  justify-content: $just;
+  align-items: $align;
+}
+
+@mixin mq($break) {
+  @if $break == med {
+    @media (min-width: 376px) {
+      @content;
+    }
+  } @else if $break == lg {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } 
+}

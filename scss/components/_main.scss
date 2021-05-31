@@ -1,0 +1,31 @@
+@use '../utilities/variables';
+@use '../utilities/mixins';
+
+.main-body {
+    background-color: variables.$main-bg1;
+    color: variables.$white;
+    height: 100vh;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 2em;
+    height: 450px;
+    @include mixins.mq(med) {
+        max-width: 375px;
+    }
+    @include mixins.mq(lg) {
+        max-width: 600px;
+    }
+}
+
+.input-field input{
+    background-color: variables.$screen-bg1;
+    padding: 2em;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    color: variables.$white;
+    text-align: right;
+}

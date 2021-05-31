@@ -1,2 +1,4 @@
-@forward 'grid';
-@forward 'buttons';
+@use 'header';
+@use 'keypad';
+@use 'main';
+@use 'toggle-switch';

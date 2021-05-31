@@ -1,0 +1,20 @@
+@use '../utilities/variables';
+@use '../utilities/mixins';
+
+// font
+@import url('https://fonts.googleapis.com/css2?family=Spartan&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Spartan', sans-serif;
+}
+
+.attribution { 
+    font-size: 11px; text-align: center; 
+}
+
+.attribution a { 
+    color: hsl(228, 45%, 44%); 
+}

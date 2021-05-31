@@ -1,0 +1,26 @@
+@use '../utilities/variables';
+@use '../utilities/mixins';
+
+.header-content {
+    height: 4em;
+    @include mixins.flex-box($align: center);
+    p {
+        margin-left: auto;
+        margin-right: 1em;
+    }
+}
+
+.toggle-div {
+    align-self: flex-start;
+    width: 60px;
+}
+
+.number-div {
+    font-size: .6125rem;
+    padding: .625em 0;
+    @include mixins.flex-box($just: space-around);
+}
+
+.radio-div{
+    @include mixins.flex-box($just: space-around);
+}
