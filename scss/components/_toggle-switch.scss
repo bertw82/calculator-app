@@ -2,7 +2,6 @@
 @use '../utilities/mixins';
 
 .radio-div {
-  // position: relative;
     background-color: variables.$toggle-keypad-bg1;
     border-radius: 5px;
 }
@@ -12,18 +11,40 @@ input[type="radio"] {
   cursor: pointer;
 }
 
-.radio-label {
+.radio-label-1 {
   position: relative;
 }
 
-.radio-label:before {
+.radio-label-2 {
+  @extend .radio-label-1;
+}
+
+.radio-label-3 {
+  @extend .radio-label-1;
+}
+
+%radio-label {
   content: '';
   position: absolute;
-  background-color: variables.$toggle-equal-key1;
   z-index: 1000;
   left: 2px;
   top: 3px;
   height: 10px;
   width: 10px;
   border-radius: 50%;
+}
+
+.radio-label-1::before {
+  @extend %radio-label;
+  background-color: variables.$toggle-equal-key1;
+}
+
+.radio-label-2::before {
+  @extend %radio-label;
+  background-color: variables.$toggle-equal-key2;
+}
+
+.radio-label-3::before {
+  @extend %radio-label;
+  background-color: variables.$toggle-equal-key3;
 }
