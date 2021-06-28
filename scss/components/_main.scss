@@ -2,8 +2,7 @@
 @use '../utilities/mixins';
 
 .main-body {
-    background-color: variables.$main-bg1;
-    color: variables.$white;
+    background-color: var(--main-bg);
     min-height: 100vh;
     overflow: scroll;
 }
@@ -22,12 +21,12 @@
 }
 
 #numberInput {
-    background-color: variables.$screen-bg1;
+    background-color: var(--screen-bg);
     padding: 1.5em;
     width: 100%;
     border: none;
     border-radius: 10px;
-    color: variables.$white;
+    color: var(--header-text);
     text-align: right;
     font-size: 1.25rem;
     font-weight: 900;

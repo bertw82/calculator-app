@@ -2,7 +2,7 @@
 @use '../utilities/mixins';
 
 .radio-div {
-    background-color: variables.$toggle-keypad-bg1;
+    background-color: var(--toggle-keypad-bg);
     border-radius: 5px;
 }
 

@@ -2,7 +2,25 @@
     Colors 
  =================*/
 
+ :root {
+    --main-bg: hsl(222, 26%, 31%);
+    --toggle-keypad-bg: hsl(223, 31%, 20%);
+    --screen-bg: hsl(224, 36%, 15%);
+    --reset-key-bg: hsl(225, 21%, 49%);
+    --reset-shadow: hsl(224, 28%, 35%);
+    --toggle-equal-key: hsl(6, 63%, 50%);
+    --toggle-equal-shadow: hsl(6, 70%, 34%);
+    --key-bg: hsl(30, 25%, 89%);
+    --key-shadow: hsl(28, 16%, 65%);
+    --key-text: hsl(221, 14%, 31%);
+    --header-text: #fff;
+
+    --key-text-option: hsl(198, 20%, 13%);
+    --white: #fff;
+}
+
 /* medium theme - 1 */
+$white: #fff;
 
 // backgrounds 
 $main-bg1: hsl(222, 26%, 31%);
@@ -17,7 +35,7 @@ $key-bg1: hsl(30, 25%, 89%);
 $key-shadow1: hsl(28, 16%, 65%);
 // text
 $key-text1: hsl(221, 14%, 31%);
-$white: #fff;
+$header-text1: #fff;
 
 /* light theme - 2 */
 
@@ -34,12 +52,14 @@ $key-bg2: hsl(45, 7%, 89%);
 $key-shadow2: hsl(35, 11%, 61%);
 // text
 $key-text2: hsl(60, 10%, 19%);
+$header-text2: hsl(60, 10%, 19%);
 
 /* dark theme - 3 */
 
 // backgrounds
 $main-bg3: hsl(268, 75%, 9%);
-$toggle-keypad-screen-bg3: hsl(268, 71%, 12%);
+$toggle-keypad-bg3: hsl(268, 71%, 12%);
+$screen-bg3: hsl(268, 71%, 12%);
 // keys
 $reset-key3: hsl(281, 89%, 26%);
 $reset-shadow3: hsl(285, 91%, 52%);
@@ -49,6 +69,7 @@ $key-bg3: hsl(268, 47%, 21%);
 $key-shadow3: hsl(290, 70%, 36%);
 // text
 $key-text3: hsl(52, 100%, 62%);
-$key-text-option3: hsl(198, 20%, 13%);
+$header-text3: hsl(52, 100%, 62%);
 
+$key-text-option3: hsl(198, 20%, 13%);
 

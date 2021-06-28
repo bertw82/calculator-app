@@ -2,6 +2,7 @@
 @use '../utilities/mixins';
 
 .header-content {
+    color: var(--header-text);
     height: 4em;
     @include mixins.flex-box($align: center);
     h2 {
