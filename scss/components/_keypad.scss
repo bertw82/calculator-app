@@ -19,7 +19,8 @@
     @include mixins.mq(lg) {
         grid-gap: 25px;
     }
-    > div {
+    > button {
+        border: none;
         background-color: var(--key-bg);
         box-shadow: 0 3px 0 var(--key-shadow);
         color: var(--key-text);
@@ -28,12 +29,19 @@
         font-weight: 900;
         font-size: 1.25rem;
         @include mixins.flex-box($align: center, $just: center);
+        &:active {
+            box-shadow: inset 0 0 7px var(--key-shadow);
+        }
     }
-    > div:nth-of-type(4) {
+    > button:nth-of-type(4) {
+        font-weight: 700;
         background-color: var(--reset-key-bg);
         color: variables.$white;
         box-shadow: 0 3px 0 var(--reset-shadow);
         font-size: 1rem;
+         &:active {
+            box-shadow: inset 0 0 7px var(--key-shadow);
+        }
     }
 }
 
@@ -47,19 +55,32 @@
         margin-top: 25px;
         grid-gap: 25px;
     }
-    > div {
-        color: variables.$white;
+    > button {
+        border: none;
         border-radius: 5px;
         height: 60px;
+        font-weight: 900;
         @include mixins.flex-box($align: center, $just: center);
     }
-    > div:first-child {
+    > button:first-child {
+        color: variables.$white;
         background-color: var(--reset-key-bg);
         box-shadow: 0 3px 0 var(--reset-shadow);
+        &:active {
+            box-shadow: inset 0 0 7px var(--reset-shadow);
+        }
         
     }
-    > div:last-child {
+    > button:last-child {
+        color: var(--equal-key);
         background-color: var(--toggle-equal-key);
         box-shadow: 0 3px 0 var(--toggle-equal-shadow);
+        &:active {
+            box-shadow: inset 0 0 7px var(--toggle-equal-shadow);
+        }
     }
+}
+
+.pressed {
+    border: 2px solid red;
 }

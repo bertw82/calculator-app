@@ -14,7 +14,7 @@
     --key-shadow: hsl(28, 16%, 65%);
     --key-text: hsl(221, 14%, 31%);
     --header-text: #fff;
-
+    --equal-key: #fff;
     --key-text-option: hsl(198, 20%, 13%);
     --white: #fff;
 }
@@ -36,6 +36,7 @@ $key-shadow1: hsl(28, 16%, 65%);
 // text
 $key-text1: hsl(221, 14%, 31%);
 $header-text1: #fff;
+$equal-key1: #fff;
 
 /* light theme - 2 */
 
@@ -53,6 +54,7 @@ $key-shadow2: hsl(35, 11%, 61%);
 // text
 $key-text2: hsl(60, 10%, 19%);
 $header-text2: hsl(60, 10%, 19%);
+$equal-key2: #fff;
 
 /* dark theme - 3 */
 
@@ -70,6 +72,5 @@ $key-shadow3: hsl(290, 70%, 36%);
 // text
 $key-text3: hsl(52, 100%, 62%);
 $header-text3: hsl(52, 100%, 62%);
-
-$key-text-option3: hsl(198, 20%, 13%);
+$equal-key3: hsl(198, 20%, 13%);
 

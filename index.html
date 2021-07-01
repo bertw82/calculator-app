@@ -34,33 +34,31 @@
         </div>
       </div>
 
-      <div class="input-field">
-        <input type="text" id="numberInput" name="calculator-input">
-      </div>
+      <div class="input-field" id="numberInput"></div>
 
       <div class="keypad">
         <div class="griddy">
           <div class="number-grid">
-            <div>7</div>
-            <div>8</div>
-            <div>9</div>
-            <div class="reset-del-js">DEL</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
-            <div>+</div>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>-</div>
-            <div>.</div>
-            <div>0</div>
-            <div>/</div>
-            <div>x</div>
+            <button type="button" value="7">7</button>
+            <button type="button" value="8">8</button>
+            <button type="button" value="9">9</button>
+            <button type="button" data-action="delete" class="reset-del-js">DEL</button>
+            <button type="button" value="4">4</button>
+            <button type="button" value="5">5</button>
+            <button type="button" value="6">6</button>
+            <button type="button" data-action="add">+</button>
+            <button type="button" value="1">1</button>
+            <button type="button" value="2">2</button>
+            <button type="button" value="3">3</button>
+            <button type="button" data-action="subtract">-</button>
+            <button type="button" data-action="decimal">.</button>
+            <button type="button" value="0">0</button>
+            <button type="button" data-action="divide">/</button>
+            <button type="button" data-action="multiply">x</button>
           </div>
           <div class="reset-equal">
-            <div class="reset-del-js">RESET</div>
-            <div>=</div>
+            <button type="button" data-action="reset" class="reset-del-js">RESET</button>
+            <button type="button" data-action="calculate">=</button>
           </div>
         </div>
       </div>

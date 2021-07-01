@@ -7,7 +7,8 @@ const radioBtns = document.querySelectorAll('input[type="radio"]');
 const numberInput = document.querySelector('#numberInput');
 const resetDel = document.querySelectorAll('.reset-del');
 const resetEqual = document.querySelector('.reset-equal');
-const keys = document.querySelectorAll('.number-grid div');
+const keys = document.querySelectorAll('.number-grid button');
+const keypad = document.querySelector('.keypad');
 
 /**
  * Toggle radio buttons 
@@ -19,6 +20,8 @@ function selectTheme() {
         if (radioBtns[i].checked) {
             const id = radioBtns[i].getAttribute('id');
             radioBtns[i].parentNode.className = `radio-label-${id}`;
+            // focus on input
+            numberInput.textContent = '0';
         } else {
             radioBtns[i].parentNode.className = '';
         }
@@ -58,6 +61,7 @@ const theme1 = [
     'hsl(30, 25%, 89%)',
     'hsl(28, 16%, 65%)',
     'hsl(221, 14%, 31%)',
+    '#fff',
     '#fff'
 ];
 
@@ -72,7 +76,8 @@ const theme2 = [
     'hsl(45, 7%, 89%)',
     'hsl(35, 11%, 61%)',
     'hsl(60, 10%, 19%)',
-    'hsl(60, 10%, 19%)'
+    'hsl(60, 10%, 19%)',
+    '#fff'
 ];
 
 const theme3 = [
@@ -86,7 +91,8 @@ const theme3 = [
     'hsl(268, 47%, 21%)',
     'hsl(290, 70%, 36%)',
     'hsl(52, 100%, 62%)',
-    'hsl(52, 100%, 62%)'
+    'hsl(52, 100%, 62%)',
+    'hsl(198, 20%, 13%)'
 ];
 
 function changeTheme(arr) {
@@ -101,4 +107,63 @@ function changeTheme(arr) {
     document.documentElement.style.setProperty('--key-shadow', arr[8]);
     document.documentElement.style.setProperty('--key-text', arr[9]);
     document.documentElement.style.setProperty('--header-text', arr[10]);
+    document.documentElement.style.setProperty('--equal-key', arr[11]);
+}
+
+/**
+ * calculator functionality
+ */
+
+keypad.addEventListener('click', e => {
+    if (e.target.matches('button')){
+        const key = e.target;
+        const action = key.dataset.action;
+        const keyVal = key.textContent; // keyContent
+        const currentVal = numberInput.textContent; // displayedNum
+        const previousKeyType = mainBody.dataset.previousKeyType;
+        keys.forEach(key => key.classList.remove('pressed'));
+        if (!action){
+            if (currentVal === '0' || previousKeyType === 'operator'){
+                numberInput.textContent = keyVal;
+            } else {
+                numberInput.textContent = currentVal + keyVal;
+            }
+        } else if (
+            action === 'add' ||
+            action === 'subtract' ||
+            action === 'multiply' ||
+            action === 'divide'
+        ){
+            key.classList.add('pressed');
+            mainBody.dataset.previousKeyType = 'operator';
+            mainBody.dataset.firstValue = currentVal;
+            mainBody.dataset.operator = action;
+        } else if (action === 'decimal'){
+            numberInput.textContent = currentVal + '.';
+        } else if (action === 'delete'){
+            console.log('delete');
+        } else if (action === 'reset'){
+            console.log('reset');
+        } else if (action === 'calculate'){
+            const firstVal = mainBody.dataset.firstValue;
+            const operator = mainBody.dataset.operator;
+            const secondVal = currentVal;
+
+            numberInput.textContent = calculate(firstVal, operator, secondVal);
+        }
+    }
+});
+
+function calculate(num1, operator, num2) {
+    let result = '';
+    if (operator === 'add'){
+        result = parseFloat(num1) + parseFloat(num2);
+    } else if (operator === 'subtract'){
+        result = parseFloat(num1) - parseFloat(num2);
+    } else if (operator === 'multiply'){
+        result = parseFloat(num1) * parseFloat(num2);
+    } else if (operator === 'divide'){
+        result = parseFloat(num1) / parseFloat(num2);
+    }
+    return result;
 }
