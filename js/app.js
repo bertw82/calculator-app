@@ -4,11 +4,14 @@
 const mainBody = document.querySelector('.main-body');
 const radioDiv = document.querySelector('.radio-div');
 const radioBtns = document.querySelectorAll('input[type="radio"]');
-const numberInput = document.querySelector('#numberInput');
+const numberDisplay = document.querySelector('#numberInput');
 const resetDel = document.querySelectorAll('.reset-del');
 const resetEqual = document.querySelector('.reset-equal');
 const keys = document.querySelectorAll('.number-grid button');
 const keypad = document.querySelector('.keypad');
+
+// On page load numberDisplay is set to '0'
+numberDisplay.textContent = '0';
 
 /**
  * Toggle radio buttons 
@@ -21,7 +24,6 @@ function selectTheme() {
             const id = radioBtns[i].getAttribute('id');
             radioBtns[i].parentNode.className = `radio-label-${id}`;
             // focus on input
-            numberInput.textContent = '0';
         } else {
             radioBtns[i].parentNode.className = '';
         }
@@ -112,6 +114,8 @@ function changeTheme(arr) {
 
 /**
  * calculator functionality
+ * 
+ * Written with assistance from: https://www.freecodecamp.org/news/how-to-build-an-html-calculator-app-from-scratch-using-javascript-4454b8714b98/
  */
 
 keypad.addEventListener('click', e => {
@@ -119,51 +123,81 @@ keypad.addEventListener('click', e => {
         const key = e.target;
         const action = key.dataset.action;
         const keyVal = key.textContent; // keyContent
-        const currentVal = numberInput.textContent; // displayedNum
+        const currentVal = numberDisplay.textContent; // displayedNum
         const previousKeyType = mainBody.dataset.previousKeyType;
         keys.forEach(key => key.classList.remove('pressed'));
         if (!action){
-            if (currentVal === '0' || previousKeyType === 'operator'){
-                numberInput.textContent = keyVal;
+            if (currentVal === '0' || 
+            previousKeyType === 'operator' ||
+            previousKeyType === 'calculate') {
+                numberDisplay.textContent = keyVal;
             } else {
-                numberInput.textContent = currentVal + keyVal;
+                numberDisplay.textContent = currentVal + keyVal;
             }
+            mainBody.dataset.previousKeyType = 'number';
         } else if (
             action === 'add' ||
             action === 'subtract' ||
             action === 'multiply' ||
             action === 'divide'
         ){
-            key.classList.add('pressed');
-            mainBody.dataset.previousKeyType = 'operator';
-            mainBody.dataset.firstValue = currentVal;
-            mainBody.dataset.operator = action;
-        } else if (action === 'decimal'){
-            numberInput.textContent = currentVal + '.';
-        } else if (action === 'delete'){
-            console.log('delete');
-        } else if (action === 'reset'){
-            console.log('reset');
-        } else if (action === 'calculate'){
             const firstVal = mainBody.dataset.firstValue;
             const operator = mainBody.dataset.operator;
             const secondVal = currentVal;
 
-            numberInput.textContent = calculate(firstVal, operator, secondVal);
+            if (firstVal && operator && previousKeyType !== 'operator' && previousKeyType !== 'calculate') {
+                const calcVal = calculate(firstVal, operator, secondVal);
+                numberDisplay.textContent = calcVal;
+                mainBody.dataset.firstValue = calcVal;
+            } else {
+                mainBody.dataset.firstValue = currentVal;
+            }
+            key.classList.add('pressed');
+            mainBody.dataset.previousKeyType = 'operator';
+            mainBody.dataset.operator = action;
+        } else if (action === 'decimal'){
+            if (!currentVal.includes('.')) {
+                numberDisplay.textContent = currentVal + '.';
+            } else if (previousKeyType === 'operator' || previousKeyType === 'calculate') {
+                numberDisplay.textContent = '0.';
+            }
+            mainBody.dataset.previousKeyType = 'decimal';
+        } else if (action === 'delete'){
+            numberDisplay.textContent = '0';
+            mainBody.dataset.previousKeyType = 'delete';
+        } else if (action === 'reset'){
+            mainBody.dataset.firstValue = '';
+            mainBody.dataset.modValue = '';
+            mainBody.dataset.operator = '';
+            numberDisplay.textContent = '0';
+            mainBody.dataset.previousKeyType = 'reset';
+        } else if (action === 'calculate'){
+            let firstVal = mainBody.dataset.firstValue;
+            const operator = mainBody.dataset.operator;
+            let secondVal = currentVal;
+            if (firstVal) {
+                if (previousKeyType === 'calculate') {
+                    firstVal = currentVal;
+                    secondVal = mainBody.dataset.modValue;
+                }
+                numberDisplay.textContent = calculate(firstVal, operator, secondVal);
+            }
+            mainBody.dataset.modValue = secondVal;
+            mainBody.dataset.previousKeyType = 'calculate';
         }
     }
 });
 
 function calculate(num1, operator, num2) {
-    let result = '';
+    const number1 = parseFloat(num1);
+    const number2 = parseFloat(num2);
     if (operator === 'add'){
-        result = parseFloat(num1) + parseFloat(num2);
+        return number1 + number2;
     } else if (operator === 'subtract'){
-        result = parseFloat(num1) - parseFloat(num2);
+        return number1 - number2;
     } else if (operator === 'multiply'){
-        result = parseFloat(num1) * parseFloat(num2);
+        return number1 * number2;
     } else if (operator === 'divide'){
-        result = parseFloat(num1) / parseFloat(num2);
+        return number1 / number2;
     }
-    return result;
 }
