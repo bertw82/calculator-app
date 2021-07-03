@@ -140,7 +140,7 @@ keypad.addEventListener('click', e => {
             action === 'subtract' ||
             action === 'multiply' ||
             action === 'divide'
-        ){
+        ) {
             const firstVal = mainBody.dataset.firstValue;
             const operator = mainBody.dataset.operator;
             const secondVal = currentVal;
@@ -163,8 +163,17 @@ keypad.addEventListener('click', e => {
             }
             mainBody.dataset.previousKeyType = 'decimal';
         } else if (action === 'delete'){
-            numberDisplay.textContent = '0';
-            mainBody.dataset.previousKeyType = 'delete';
+            if (previousKeyType !== 'calculate') {
+                if (currentVal.length > 1) {
+                    const newVal = currentVal.slice(0, -1);
+                    numberDisplay.textContent = newVal;
+                } else if (currentVal.length === 1) {
+                    numberDisplay.textContent = '0';
+                } else {
+                    numberDisplay.textContent = '0';
+                }
+            }
+            // mainBody.dataset.previousKeyType = 'delete';
         } else if (action === 'reset'){
             mainBody.dataset.firstValue = '';
             mainBody.dataset.modValue = '';
