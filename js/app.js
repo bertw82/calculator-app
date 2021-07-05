@@ -1,6 +1,7 @@
 /**
  * Global variables
  */
+
 const mainBody = document.querySelector('.main-body');
 const radioDiv = document.querySelector('.radio-div');
 const radioBtns = document.querySelectorAll('input[type="radio"]');
@@ -14,7 +15,7 @@ const keypad = document.querySelector('.keypad');
 numberDisplay.textContent = '0';
 
 /**
- * Toggle radio buttons 
+ * Change Theme
  **/ 
 
 // On page load, first theme is selected
@@ -114,7 +115,6 @@ function changeTheme(arr) {
 
 /**
  * calculator functionality
- * 
  * Written with assistance from: https://www.freecodecamp.org/news/how-to-build-an-html-calculator-app-from-scratch-using-javascript-4454b8714b98/
  */
 
