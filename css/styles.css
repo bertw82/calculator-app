@@ -372,6 +372,7 @@ template {
   padding-top: 4em;
   font-size: 11px;
   text-align: center;
+  color: var(--header-text);
 }
 
 .attribution a {
@@ -500,8 +501,7 @@ template {
 }
 
 .pressed {
-  border: 2px solid red!important;
-  box-shadow: none!important;
+  border: 2px solid red;
 }
 
 .main-body {
