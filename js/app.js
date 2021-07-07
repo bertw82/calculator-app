@@ -162,18 +162,10 @@ keypad.addEventListener('click', e => {
                 numberDisplay.textContent = '0.';
             }
             mainBody.dataset.previousKeyType = 'decimal';
-        } else if (action === 'delete'){
-            if (previousKeyType !== 'calculate') {
-                if (currentVal.length > 1) {
-                    const newVal = currentVal.slice(0, -1);
-                    numberDisplay.textContent = newVal;
-                } else if (currentVal.length === 1) {
-                    numberDisplay.textContent = '0';
-                } else {
-                    numberDisplay.textContent = '0';
-                }
+        } else if (action === 'delete'){   
+            if(previousKeyType !== 'calculate'){
+                numberDisplay.textContent = '0';
             }
-            // mainBody.dataset.previousKeyType = 'delete';
         } else if (action === 'reset'){
             mainBody.dataset.firstValue = '';
             mainBody.dataset.modValue = '';
