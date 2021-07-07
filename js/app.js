@@ -156,12 +156,19 @@ keypad.addEventListener('click', e => {
             mainBody.dataset.previousKeyType = 'operator';
             mainBody.dataset.operator = action;
         } else if (action === 'decimal'){
-            if (!currentVal.includes('.')) {
-                numberDisplay.textContent = currentVal + '.';
-            } else if (previousKeyType === 'operator' || previousKeyType === 'calculate') {
+            console.log(previousKeyType);
+            if (previousKeyType !== 'calculate') {
+                if (!currentVal.includes('.')) {
+                    numberDisplay.textContent = currentVal + '.';
+                } else if (previousKeyType === 'operator') {
+                    numberDisplay.textContent = '0.';
+                }
+                mainBody.dataset.previousKeyType = 'decimal';
+            } else {
                 numberDisplay.textContent = '0.';
+                mainBody.dataset.previousKeyType = 'decimal';
             }
-            mainBody.dataset.previousKeyType = 'decimal';
+            
         } else if (action === 'delete'){   
             if(previousKeyType !== 'calculate'){
                 numberDisplay.textContent = '0';
