@@ -436,13 +436,13 @@ template {
 }
 .number-grid > button {
   border: none;
-  background-color: var(--key-bg);
-  box-shadow: 0 3px 0 var(--key-shadow);
-  color: var(--key-text);
   height: 50px;
   border-radius: 5px;
   font-weight: 900;
   font-size: 1.25rem;
+  color: var(--key-text);
+  background-color: var(--key-bg);
+  box-shadow: 0 3px 0 var(--key-shadow);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -451,10 +451,10 @@ template {
   box-shadow: inset 0 0 7px var(--key-shadow);
 }
 .number-grid > button:nth-of-type(4) {
-  font-weight: 700;
-  background-color: var(--reset-key-bg);
   color: #fff;
+  background-color: var(--reset-key-bg);
   box-shadow: 0 3px 0 var(--reset-shadow);
+  font-weight: 700;
   font-size: 1rem;
 }
 .number-grid > button:nth-of-type(4):active {
@@ -462,11 +462,11 @@ template {
 }
 
 .reset-equal {
+  margin-top: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   grid-gap: 15px;
-  margin-top: 15px;
 }
 @media (min-width: 768px) {
   .reset-equal {
@@ -522,7 +522,7 @@ template {
 }
 @media (min-width: 768px) {
   .container {
-    max-width: 550px;
+    max-width: 500px;
     padding-top: 4em;
   }
 }

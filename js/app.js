@@ -122,16 +122,22 @@ keypad.addEventListener('click', e => {
     if (e.target.matches('button')){
         const key = e.target;
         const action = key.dataset.action;
-        const keyVal = key.textContent; // keyContent
-        const currentVal = numberDisplay.textContent; // displayedNum
+        const keyVal = key.textContent; 
+        const currentVal = numberDisplay.textContent;
         const previousKeyType = mainBody.dataset.previousKeyType;
         keys.forEach(key => key.classList.remove('pressed'));
         if (!action){
             if (currentVal === '0' || 
-            previousKeyType === 'operator' ||
-            previousKeyType === 'calculate') {
+            previousKeyType === 'operator' ) {
                 numberDisplay.textContent = keyVal;
-            } else {
+          
+            } else if (previousKeyType === 'calculate') {
+                mainBody.dataset.firstValue = '';
+                mainBody.dataset.modValue = '';
+                mainBody.dataset.operator = '';
+                numberDisplay.textContent = keyVal;
+            } 
+            else {
                 numberDisplay.textContent = currentVal + keyVal;
             }
             mainBody.dataset.previousKeyType = 'number';
@@ -163,13 +169,31 @@ keypad.addEventListener('click', e => {
                     numberDisplay.textContent = currentVal + '.';
                 } 
                 mainBody.dataset.previousKeyType = 'decimal';
+            } else if (previousKeyType === 'calculate') {
+                mainBody.dataset.firstValue = '';
+                mainBody.dataset.modValue = '';
+                mainBody.dataset.operator = '';
+                numberDisplay.textContent = '0.';
+                mainBody.dataset.previousKeyType = 'decimal';
             } else {
                 numberDisplay.textContent = '0.';
                 mainBody.dataset.previousKeyType = 'decimal';
             }
-            
+ 
         } else if (action === 'delete'){   
-            if(previousKeyType !== 'calculate'){
+            if (previousKeyType !== 'calculate') {
+                if (currentVal.length > 1) {
+                    const newVal = currentVal.slice(0, -1);
+                    numberDisplay.textContent = newVal;
+                } else if (currentVal.length === 1) {
+                    numberDisplay.textContent = '0';
+                } else {
+                    numberDisplay.textContent = '0';
+                }
+            } else if (previousKeyType === 'calculate') {
+                mainBody.dataset.firstValue = '';
+                mainBody.dataset.modValue = '';
+                mainBody.dataset.operator = '';
                 numberDisplay.textContent = '0';
             }
         } else if (action === 'reset'){

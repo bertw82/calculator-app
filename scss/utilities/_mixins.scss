@@ -12,6 +12,7 @@
   align-items: $align;
 }
 
+// media queries mixin
 @mixin mq($break) {
   @if $break == med {
     @media (min-width: 376px) {
@@ -22,4 +23,26 @@
       @content;
     }
   } 
+}
+
+// css grid mixin
+@mixin grid(
+  $disp: grid,
+  $gt-cols: null,
+  $gt-rows: null,
+  $gt-area: null,
+  $gr-cols: null,
+  $gr-gap: null,) {
+    display: $disp;
+    grid-template-columns: $gt-cols;
+    grid-template-rows: $gt-rows;
+    grid-template-areas: $gt-area;
+    grid-column: $gr-cols;
+    grid-gap: $gr-gap;
+  }
+
+@mixin button-style($color, $background-color, $box-shadow) {
+  color: $color;
+  background-color: $background-color;
+  box-shadow: $box-shadow;
 }

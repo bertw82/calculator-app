@@ -15,7 +15,7 @@
         max-width: 375px;
     }
     @include mixins.mq(lg) {
-        max-width: 550px;
+        max-width: 500px;
         padding-top: 4em;
     }
 }
